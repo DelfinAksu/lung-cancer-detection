@@ -1,0 +1,15 @@
+# env & cache
+venv/
+__pycache__/
+
+# big data stays local
+data/raw/
+data/processed/
+
+# generated outputs
+results/figures/
+results/logs/
+
+# misc
+*.zip
+*.dcm
