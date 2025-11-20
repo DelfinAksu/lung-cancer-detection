@@ -1,15 +1,8 @@
-from src.deep.data_loader import get_data_generators
+from src.deep.evaluate import evaluate_model
 
 def main():
-    print("Lung Cancer Detection Project - Data Loader Test")
-    
-    # Data generator'ları oluştur
-    train_gen, val_gen = get_data_generators()
-
-    # Birkaç bilgi yazdıralım
-    print(f"Train samples: {train_gen.samples}")
-    print(f"Validation samples: {val_gen.samples}")
-    print("Class indices:", train_gen.class_indices)
+    print("Running Test Evaluation...")
+    true_labels, pred_labels, class_names = evaluate_model()
 
 if __name__ == "__main__":
     main()

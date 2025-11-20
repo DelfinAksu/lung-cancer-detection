@@ -13,3 +13,6 @@ results/logs/
 # misc
 *.zip
 *.dcm
+
+results/models/*.h5
+results/models/*.keras

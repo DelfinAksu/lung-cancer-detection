@@ -3,6 +3,7 @@ from tensorflow.keras.preprocessing.image import ImageDataGenerator
 from src.config import (
     TRAIN_DIR,
     VAL_DIR,
+    TEST_DIR,
     IMG_HEIGHT,
     IMG_WIDTH,
     BATCH_SIZE,
@@ -56,3 +57,20 @@ def get_data_generators():
     print("Class indices:", train_generator.class_indices)
     # Örn: {'adenocarcinoma': 0, 'large.cell.carcinoma': 1, ...}
     return train_generator, val_generator
+
+
+def get_test_generator():
+    """
+    Creates test data generator (only rescaling, no augmentation).
+    """
+    test_datagen = ImageDataGenerator(rescale=1/255)
+
+    test_gen = test_datagen.flow_from_directory(
+        TEST_DIR,
+        target_size=(IMG_HEIGHT, IMG_WIDTH),
+        batch_size=BATCH_SIZE,
+        class_mode="categorical",
+        shuffle=False
+    )
+
+    return test_gen
